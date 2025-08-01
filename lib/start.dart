@@ -8,29 +8,66 @@ class StartWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Profil Saya",
-          style: TextStyle(fontSize: 35, fontFamily: "LibertinusSans"),
+          "Profil Lengkap",
+          style: TextStyle(
+            fontSize: 25,
+            fontFamily: "DM_Serif_Text",
+            fontStyle: FontStyle.italic,
+          ),
         ),
-        backgroundColor: Colors.blueGrey,
-        actions: [Icon(Icons.favorite), Icon(Icons.message)],
-        centerTitle: true,
+        backgroundColor: (Color(0xFFF3E2D4)),
+        actions: [Icon(Icons.account_circle, size: 40, color: Colors.grey)],
       ),
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Nama: Naufal Rifky Dwi Putra",
-            style: TextStyle(fontSize: 20, fontFamily: "LibertinusSans"),
+          Center(
+            child: Padding(
+              padding: EdgeInsets.all(18),
+              child: Text(
+                "Naufal Rifky Dwi Putra",
+                style: TextStyle(fontSize: 20, fontFamily: "Delius"),
+              ),
+            ),
           ),
-          SizedBox(height: 10),
-          Row(
-            children: [
-              Icon(Icons.location_on),
-              Text("Jakarta Selatan", style: TextStyle(fontSize: 15)),
-            ],
+          Container(
+            width: 400,
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.orangeAccent,
+              border: Border.all(
+                color: const Color.fromARGB(221, 255, 168, 7),
+                width: 10,
+              ),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.email, size: 20, color: Colors.black),
+                SizedBox(width: 20),
+                Spacer(),
+                Text("naufalrifkidwiputra3081@gmail.com"),
+              ],
+            ),
           ),
-          SizedBox(height: 10),
-          Text("Seorang pelajar yang sedang belajar flutter"),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            child: Row(
+              children: [
+                Icon(Icons.phone, size: 20, color: Colors.black),
+                SizedBox(width: 10),
+                Spacer(),
+                Text("085880498378"),
+              ],
+            ),
+          ),
+
+          Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 20)),
         ],
       ),
     );

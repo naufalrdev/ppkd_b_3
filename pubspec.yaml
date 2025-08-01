@@ -60,6 +60,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/fonts/LibertinusSans/
+    - assets/fonts/DM_Serif_Text/
+    - assets/fonts/Delius/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -91,6 +93,17 @@ flutter:
           weight: 300
         - asset: assets/fonts/LibertinusSans/LibertinusSans-Italic.ttf
           weight: 100
+    - family: DM_Serif_Text
+      fonts:
+        - asset: assets/fonts/DM_Serif_Text/DMSerifText-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/DM_Serif_Text/DMSerifText-Italic.ttf
+          weight: 400
+
+    - family: Delius
+      fonts:
+        - asset: assets/fonts/Delius/Delius-Regular.ttf
+          weight: 400
 
     
   #
