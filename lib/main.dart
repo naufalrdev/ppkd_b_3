@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/start.dart';
+import 'package:ppkd_b_3/tugas_2-flutter/tugas_2.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: StartWidget(),
+      home: Tugas2Flutter(),
     );
   }
 }
