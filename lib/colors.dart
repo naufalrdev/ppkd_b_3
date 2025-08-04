@@ -10,4 +10,11 @@ class AppColor {
   static const Color mintGreen = Color(0xFFD6F5E3);
   static const Color lavender = Color(0xFFE6E6FA);
   static const Color butterYellow = Color(0xFFFFF9C4);
+  //Palet Pastel Lembut
+  static const Color pinkPastel = Color(0xFFFFC1CC);
+  static const Color kuningPastel = Color(0xFFFFF3B0);
+  static const Color biruMuda = Color(0xFFB5EAEA);
+  static const Color hijauPastel = Color(0xFFC1E1C1);
+  static const Color peach1 = Color(0xFFFFD6A5);
+  static const Color merahMudaLembut = Color(0xFFD4A5A5);
 }
