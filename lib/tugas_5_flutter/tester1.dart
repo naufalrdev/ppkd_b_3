@@ -14,11 +14,17 @@ class _MyWidgetState extends State<MyWidget> {
   bool showDeskripsi = false;
   int count = 0;
   bool showInkWell = false;
+  bool showBox = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Tugas 5 Flutter")),
+      appBar: AppBar(
+        title: Text(
+          "Halaman Interaksi",
+          style: TextStyle(fontFamily: "Lobster"),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
@@ -28,8 +34,7 @@ class _MyWidgetState extends State<MyWidget> {
         child: Icon(Icons.add),
       ),
 
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: ListView(
         children: [
           Center(
             child: Column(
@@ -47,7 +52,7 @@ class _MyWidgetState extends State<MyWidget> {
                   },
                   child: Text(showNama ? 'Sembunyikan ' : 'Tampilkan '),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 20),
                 if (showNama) Text("Nama Saya: Naufal Rifky Dwi Putra"),
               ],
             ),
@@ -66,20 +71,34 @@ class _MyWidgetState extends State<MyWidget> {
                   color: isLiked ? Colors.red : Colors.grey,
                 ),
               ),
-              if (isLiked) Text("Disukai"),
+              if (isLiked) Text("Aku Cinta Kamu"),
             ],
           ),
 
-          TextButton(
-            onPressed: () {
-              setState(() {
-                showDeskripsi = !showDeskripsi;
-              });
-            },
-            child: Text(showDeskripsi ? "Sembunyikan" : "Lihat Selengkapnya"),
+          Center(
+            child: Column(
+              children: [
+                TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all<Color>(
+                      AppColor.pinkPastel,
+                    ),
+                  ),
+
+                  onPressed: () {
+                    setState(() {
+                      showDeskripsi = !showDeskripsi;
+                    });
+                  },
+                  child: Text(
+                    showDeskripsi ? "Sembunyikan" : "Lihat Selengkapnya",
+                  ),
+                ),
+                SizedBox(height: 10),
+                if (showDeskripsi) Text("Warna merah adalah cinta"),
+              ],
+            ),
           ),
-          SizedBox(height: 10),
-          if (showDeskripsi) Text("Warna merah adalah cinta"),
 
           Column(
             children: [
@@ -132,14 +151,38 @@ class _MyWidgetState extends State<MyWidget> {
 
               InkWell(
                 onTap: () {
-                  print("Kotak Disentuh");
+                  print('Kotak disentuh');
                   setState(() {
-                    showInkWell = !showInkWell;
+                    showBox = !showBox;
                   });
                 },
-                child: Text(showInkWell ? "Menghilangkan" : "Menampilkan"),
+                child: Container(
+                  padding: EdgeInsets.all(16),
+                  // width: double.infinity,
+                  // height: 50,
+                  color: Colors.blue[200],
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Tekan kotak ini',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               ),
+              if (showBox) Text('Kotak telah disentuh!'),
             ],
+          ),
+
+          SizedBox(height: 30),
+          // GestureDetector
+          GestureDetector(
+            onTap: () => print('Ditekan sekali'),
+            onDoubleTap: () => print('Ditekan dua kali'),
+            onLongPress: () => print('Tahan lama'),
+            child: Container(
+              padding: EdgeInsets.all(12),
+              color: Colors.orange[100],
+              child: Text('Tekan Aku'),
+            ),
           ),
         ],
       ),
