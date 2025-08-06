@@ -65,6 +65,7 @@ flutter:
     - assets/fonts/DM_Serif_Text/
     - assets/fonts/Delius/
     - assets/fonts/Lobster/
+    - assets/fonts/Roboto/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -111,6 +112,12 @@ flutter:
     - family: Lobster
       fonts:
         - asset: assets/fonts/Lobster/Lobster-Regular.ttf
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-VariableFont_wdth,wght
+        - asset: assets/fonts/Roboto/Roboto-Italic-VariableFont_wdth,wght
+
     
   #
   # For details regarding fonts from package dependencies,

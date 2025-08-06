@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_3/start.dart';
-import 'package:ppkd_b_3/tugas_2_flutter/tugas_2.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ppkd_b_3/tugas_3_flutter/tugas_3.dart';
-import 'package:ppkd_b_3/tugas_4_flutter/tugas_4.dart';
-import 'package:ppkd_b_3/tugas_5_flutter/tugas_5.dart';
+import 'package:ppkd_b_3/tugas_6_flutter/tugas_6.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,31 +8,77 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  final Color lightBackground = Colors.white;
+  final Color lightText = Colors.black;
+
+  final Color darkBackground = Colors.black;
+  final Color darkText = Colors.white;
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: lightBackground,
+        colorScheme: ColorScheme(
+          brightness: Brightness.light,
+          primary: Colors.brown.shade50,
+          onPrimary: lightText,
+          secondary: Colors.brown.shade50,
+          onSecondary: lightText,
+          error: Colors.red,
+          onError: Colors.white,
+          surface: Colors.brown.shade50,
+          onSurface: lightText,
+        ),
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(color: lightText),
+          bodyMedium: TextStyle(color: lightText),
+          bodySmall: TextStyle(color: lightText),
+          titleLarge: TextStyle(color: lightText),
+          titleMedium: TextStyle(color: lightText),
+          titleSmall: TextStyle(color: lightText),
+        ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: lightBackground,
+          foregroundColor: lightText,
+          elevation: 0,
+        ),
+        useMaterial3: true,
+      ),
+
+      darkTheme: ThemeData(
+        scaffoldBackgroundColor: darkBackground,
+        colorScheme: ColorScheme(
+          brightness: Brightness.dark,
+          primary: Colors.brown.shade200,
+          onPrimary: darkText,
+          secondary: Colors.brown.shade200,
+          onSecondary: darkText,
+          error: Colors.red.shade300,
+          onError: Colors.black,
+          surface: Colors.brown.shade200,
+          onSurface: darkText,
+        ),
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(color: darkText),
+          bodyMedium: TextStyle(color: darkText),
+          bodySmall: TextStyle(color: darkText),
+          titleLarge: TextStyle(color: darkText),
+          titleMedium: TextStyle(color: darkText),
+          titleSmall: TextStyle(color: darkText),
+        ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: darkBackground,
+          foregroundColor: darkText,
+          elevation: 0,
+        ),
+        useMaterial3: true,
+      ),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: MyWidget(),
+      //
+      home: Tugas6Flutter(),
     );
   }
 }
