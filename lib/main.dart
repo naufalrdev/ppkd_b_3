@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ppkd_b_3/tugas_3_flutter/tugas_3.dart';
 import 'package:ppkd_b_3/tugas_4_flutter/tugas_4.dart';
-import 'package:ppkd_b_3/tugas_5_flutter/tester1.dart';
 import 'package:ppkd_b_3/tugas_5_flutter/tugas_5.dart';
 
 void main() {
