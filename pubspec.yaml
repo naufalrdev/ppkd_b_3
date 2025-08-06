@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   google_fonts: ^6.2.0
   font_awesome_flutter: ^10.5.0 
+  lottie: ^3.3.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -115,8 +116,8 @@ flutter:
 
     - family: Roboto
       fonts:
-        - asset: assets/fonts/Roboto/Roboto-VariableFont_wdth,wght
-        - asset: assets/fonts/Roboto/Roboto-Italic-VariableFont_wdth,wght
+        - asset: assets/fonts/Roboto/Roboto-VariableFont_wdth,wght.ttf
+        - asset: assets/fonts/Roboto/Roboto-Italic-VariableFont_wdth,wght.ttf
 
     
   #

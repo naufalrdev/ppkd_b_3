@@ -17,4 +17,6 @@ class AppColor {
   static const Color hijauPastel = Color(0xFFC1E1C1);
   static const Color peach1 = Color(0xFFFFD6A5);
   static const Color merahMudaLembut = Color(0xFFD4A5A5);
+  //Color Figma UI PPKD
+  static const Color orange = Color(0xFFEA9459);
 }
