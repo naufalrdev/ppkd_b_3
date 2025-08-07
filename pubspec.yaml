@@ -67,6 +67,9 @@ flutter:
     - assets/fonts/Delius/
     - assets/fonts/Lobster/
     - assets/fonts/Roboto/
+    - assets/fonts/Gilroy/
+    - assets/images/animations/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -118,6 +121,17 @@ flutter:
       fonts:
         - asset: assets/fonts/Roboto/Roboto-VariableFont_wdth,wght.ttf
         - asset: assets/fonts/Roboto/Roboto-Italic-VariableFont_wdth,wght.ttf
+
+    - family: Gilroy
+      fonts:
+        - asset: assets/fonts/Gilroy/Gilroy-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Gilroy/Gilroy-Medium.ttf
+        - asset: assets/fonts/Gilroy/Gilroy-Light.ttf
+        - asset: assets/fonts/Gilroy/Gilroy-Heavy.ttf
+        - asset: assets/fonts/Gilroy/Gilroy-Bold.ttf
+          weight: 700
+
 
     
   #

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:ppkd_b_3/colors.dart';
 
 class Tugas6Flutter extends StatefulWidget {
   const Tugas6Flutter({super.key});
@@ -11,35 +10,38 @@ class Tugas6Flutter extends StatefulWidget {
 
 class _Tugas6Flutter extends State<Tugas6Flutter> {
   final _formKey = GlobalKey<FormState>();
-  bool _obscurePassword = true;
-  String emailController = "Email Address";
-  String passwordController = "Password";
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  void _handleLogin() {
-    if (emailController.isEmpty || passwordController.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Please fill in both email and password."),
-          backgroundColor: Colors.red,
-        ),
-      );
-    } else {
-      showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-          title: const Text("Login Info"),
-          content: Text(
-            "Email: ${emailController}\nPassword: ${passwordController}",
+  bool _obscurePassword = true;
+
+  void handleLogin(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Login succesfull"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Lottie.asset(
+                "assets/images/animations/Succes.json",
+                height: 100,
+                width: 100,
+              ),
+            ],
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("OK"),
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
           ],
-        ),
-      );
-    }
+        );
+      },
+    );
   }
 
   @override
@@ -49,12 +51,12 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
         title: Row(
           children: [
             IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios_new)),
-            SizedBox(width: 28),
+            SizedBox(width: 14),
             Text(
               "Login",
               style: TextStyle(
-                fontFamily: "Roboto",
-                fontWeight: FontWeight.w700,
+                fontFamily: "Gilroy",
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
@@ -66,7 +68,10 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsetsGeometry.directional(start: 24, top: 40),
+              padding: EdgeInsetsGeometry.symmetric(
+                vertical: 29,
+                horizontal: 24,
+              ),
               child: Row(
                 children: [
                   Text(
@@ -74,7 +79,7 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                     style: TextStyle(
                       fontSize: 24,
                       fontFamily: "Gilroy",
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
@@ -82,7 +87,7 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
             ),
 
             Padding(
-              padding: EdgeInsetsGeometry.directional(start: 24, top: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Row(
                 children: [
                   Text(
@@ -90,7 +95,8 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                     style: TextStyle(
                       fontFamily: "Gilroy",
                       fontSize: 14,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.normal,
+                      color: Color(0xFF888888),
                     ),
                   ),
                 ],
@@ -107,6 +113,7 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                       fontFamily: "Gilroy",
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
+                      color: Color(0xFF888888),
                     ),
                   ),
                 ],
@@ -124,9 +131,10 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                   spacing: 12,
                   children: [
                     TextFormField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(40),
+                          borderRadius: BorderRadius.circular(32),
                         ),
                         hint: Text(
                           "Please enter your email address ",
@@ -134,16 +142,17 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                             fontFamily: "Gilroy",
                             fontSize: 15,
                             fontWeight: FontWeight.w400,
+                            color: Color(0xFF222222),
                           ),
                         ),
-                        prefixIcon: Icon(Icons.email),
+                        // prefixIcon: Icon(Icons.email),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Email cannot be empty";
                         }
                         if (!value.contains("@")) {
-                          return "  The email is not valid";
+                          return "Email is not valid";
                         }
                         return null;
                       },
@@ -163,6 +172,7 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                       fontFamily: "Gilroy",
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
+                      color: Color(0xFF888888),
                     ),
                   ),
                 ],
@@ -180,10 +190,11 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                   spacing: 12,
                   children: [
                     TextFormField(
+                      controller: passwordController,
                       obscureText: _obscurePassword,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(40),
+                          borderRadius: BorderRadius.circular(32),
                         ),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -195,6 +206,7 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                             _obscurePassword
                                 ? Icons.visibility
                                 : Icons.visibility_off,
+                            color: Colors.grey,
                           ),
                         ),
 
@@ -204,10 +216,21 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                             fontFamily: "Gilroy",
                             fontSize: 15,
                             fontWeight: FontWeight.w400,
+                            color: Color(0xFF222222),
                           ),
                         ),
                         // prefixIcon: Icon(Icons.password),
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Password cannot be empty";
+                        }
+                        if (value.length < 6) {
+                          return 'Password must have at least 6 characters';
+                        }
+
+                        return null;
+                      },
                     ),
                   ],
                 ),
@@ -229,8 +252,8 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                       style: TextStyle(
                         fontFamily: "Gilroy",
                         fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: AppColor.orange,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFFEA9459),
                       ),
                     ),
                   ),
@@ -238,72 +261,166 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
               ],
             ),
 
-            // ElevatedButton(
-            //   onPressed: () {
-            //     //Error dan sukses menggunakan ScaffoldMessenger dan formKey
-            //     if (_formKey.currentState!.validate()) {
-            //       ScaffoldMessenger.of(context).showSnackBar(
-            //         SnackBar(content: Text("Form Validasi Berhasil")),
-            //       );
-            //     }
+            SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: SizedBox(
+                height: 56,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(32),
+                    ),
+                    backgroundColor: Color(0xFF283FB1),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      final email = emailController.text;
+                      final password = passwordController.text;
 
-            //     showDialog(
-            //       context: context,
-            //       builder: (BuildContext context) {
-            //         return AlertDialog(
-            //           title: Text("Email anda tidak sesuai"),
-            //           content: Column(
-            //             mainAxisSize: MainAxisSize.min,
-            //             children: [
-            //               Text("Silakan Masukkan email yang valid"),
-            //               SizedBox(height: 20),
-            //               // Image.asset(
-            //               //   'assets/images/rendang.jpeg',
-            //               //   width: 90,
-            //               //   height: 100,
-            //               //   fit: BoxFit.cover,
-            //               // ),
-            //               // Lottie.asset(
-            //               //   'assets/images/animations/Succes.json',
-            //               //   width: 40,
-            //               //   height: 50,
-            //               //   fit: BoxFit.cover,
-            //               // ),
-            //             ],
-            //           ),
-            //           actions: [
-            //             TextButton(
-            //               child: Text("Batal"),
-            //               onPressed: () {
-            //                 Navigator.of(context).pop();
-            //               },
-            //             ),
-            //             TextButton(
-            //               child: Text("Ok, Siap"),
-            //               onPressed: () {
-            //                 Navigator.of(context).pop();
-            //               },
-            //             ),
-            //           ],
-            //         );
-            //       },
-            //     );
-            //   },
-            //   child: Text("Submit"),
-            // ),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.indigo.shade700,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
+                      handleLogin(context);
+                    }
+                  },
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                      color: Color(0xFFFFFFFF),
+                      fontSize: 16,
+                      fontFamily: "Gilroy",
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
-                onPressed: _handleLogin,
-                child: const Text('Login', style: TextStyle(fontSize: 18)),
               ),
+            ),
+
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account? ",
+                  style: TextStyle(
+                    fontFamily: "Gilroy",
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0XFF888888),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(
+                      fontFamily: "Gilroy",
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFFEA9459),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 25),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Or Sign In With",
+                  style: TextStyle(
+                    fontFamily: "Gilroy",
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFF888888),
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 155,
+                  height: 48,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all<Color>(
+                        Color(0xFFFAFAFA),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          "assets/images/iconGoogle.png",
+                          width: 16,
+                          height: 16,
+                        ),
+                        SizedBox(width: 15),
+                        Text("Google", style: TextStyle(color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(width: 17),
+
+                SizedBox(
+                  width: 155,
+                  height: 48,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all<Color>(
+                        Color(0xFFFAFAFA),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          "assets/images/Vector.png",
+                          width: 16,
+                          height: 16,
+                        ),
+                        SizedBox(width: 15),
+                        Text("Facebook", style: TextStyle(color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 24),
+                  child: Text(
+                    "Don't have an account? ",
+                    style: TextStyle(
+                      fontFamily: "Gilroy",
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0XFF888888),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    "Join Us",
+                    style: TextStyle(
+                      fontFamily: "Gilroy",
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFFEA9459),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
