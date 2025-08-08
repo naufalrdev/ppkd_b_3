@@ -1,49 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:ppkd_b_3/tugas_7_flutter/homepage.dart';
 
-class Tugas6Flutter extends StatefulWidget {
-  const Tugas6Flutter({super.key});
+class FirstPage extends StatefulWidget {
+  const FirstPage({super.key});
 
   @override
-  State<Tugas6Flutter> createState() => _Tugas6Flutter();
+  State<FirstPage> createState() => _FirstPage();
 }
 
-class _Tugas6Flutter extends State<Tugas6Flutter> {
+class _FirstPage extends State<FirstPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   bool _obscurePassword = true;
 
-  void handleLogin(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text("Login Succesfull"),
-              Lottie.asset(
-                "assets/images/animations/Succes.json",
-                width: 100,
-                height: 100,
-              ),
-            ],
-          ),
-          content: Text("BABIBU"),
-          actions: [
-            TextButton(
-              child: Text("OK", style: TextStyle(color: Colors.blue)),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
+  // void handleLogin(BuildContext context) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: Text("Login succesfull"),
+  //         content: Column(
+  //           mainAxisSize: MainAxisSize.min,
+  //           children: [
+  //             Lottie.asset(
+  //               "assets/images/animations/Succes.json",
+  //               height: 100,
+  //               width: 100,
+  //             ),
+  //           ],
+  //         ),
+  //         actions: [
+  //           TextButton(
+  //             child: Text("OK"),
+  //             onPressed: () {
+  //               Navigator.of(context).pop(   );
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -277,10 +276,15 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      final email = emailController.text;
-                      final password = passwordController.text;
-
-                      handleLogin(context);
+                      // final email = emailController.text;
+                      // final password = passwordController.text;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Form Validasi BerhasiL")),
+                      );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
                     }
                   },
                   child: Text(

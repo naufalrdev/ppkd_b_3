@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ppkd_b_3/colors.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class Tugas5Flutter extends StatefulWidget {
+  const Tugas5Flutter({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<Tugas5Flutter> createState() => _Tugas5Flutter();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _Tugas5Flutter extends State<Tugas5Flutter> {
   bool showNama = false;
   bool isLiked = false;
   bool showDeskripsi = false;
