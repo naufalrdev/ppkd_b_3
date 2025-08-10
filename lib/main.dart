@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:ppkd_b_3/tugas_6_flutter/tugas_6.dart';
 import 'package:ppkd_b_3/tugas_7flutter/home_screen.dart';
+import 'package:ppkd_b_3/tugas_8flutter/bot_nav_bar.dart';
 
 void main() {
   initializeDateFormatting("id_ID");
@@ -35,8 +37,12 @@ class MyApp extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      //
-      home: HomeScreen1(),
+      initialRoute: "/login",
+      routes: {
+        "/login": (context) => Tugas6Flutter(),
+        BotBar1.id: (context) => BotBar1(),
+      },
+      // home: BotBar1(),
     );
   }
 }

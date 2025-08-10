@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:ppkd_b_3/extensions/navigations.dart';
+import 'package:ppkd_b_3/tugas_8flutter/bot_nav_bar.dart';
 
 class Tugas6Flutter extends StatefulWidget {
   const Tugas6Flutter({super.key});
@@ -31,12 +33,12 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
               ),
             ],
           ),
-          content: Text("BABIBU"),
+          content: Text("Let's Go"),
           actions: [
             TextButton(
               child: Text("OK", style: TextStyle(color: Colors.blue)),
               onPressed: () {
-                Navigator.pop(context);
+                (context).pushNamed(BotBar1.id);
               },
             ),
           ],
