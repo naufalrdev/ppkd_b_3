@@ -4,27 +4,31 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ppkd_b_3/colors.dart';
 
 class Tugas2Flutter extends StatelessWidget {
-  const Tugas2Flutter({super.key});
+  const Tugas2Flutter({super.key, this.appBar});
+  final bool? appBar;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Profil Lengkap',
-          style: GoogleFonts.dancingScript(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        actions: [
-          Icon(Icons.favorite_outline, size: 25),
-          SizedBox(width: 20),
-          Icon(Icons.send, size: 25),
-          SizedBox(width: 10),
-        ],
-      ),
+      appBar: appBar == false
+          ? null
+          : AppBar(
+              title: Text(
+                'Profil Lengkap',
+                style: GoogleFonts.dancingScript(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              backgroundColor: Colors.white,
+              actions: [
+                Icon(Icons.favorite_outline, size: 25),
+                SizedBox(width: 20),
+                Icon(Icons.send, size: 25),
+                SizedBox(width: 10),
+              ],
+            ),
+      drawer: appBar == false ? null : Drawer(),
 
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
