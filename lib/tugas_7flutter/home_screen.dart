@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ppkd_b_3/colors.dart';
 import 'package:ppkd_b_3/extensions/navigations.dart';
 import 'package:ppkd_b_3/tugas_7flutter/checkbox.dart';
 import 'package:ppkd_b_3/tugas_7flutter/datepicker.dart';
@@ -44,6 +46,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
     return Scaffold(
       body: Center(child: _widgetOptions[_selectedIndexDrawer]),
       appBar: AppBar(
+        backgroundColor: AppColor.teal,
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart)),
         ],
@@ -51,44 +54,48 @@ class _HomeScreen1State extends State<HomeScreen1> {
 
       drawer: Drawer(
         child: ListView(
-          children: [
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Profil"),
-              onTap: () {
-                onItemTap(0);
-              },
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(color: AppColor.teal),
+              child: ListTile(
+                leading: Icon(FontAwesomeIcons.userAstronaut),
+                title: Text("Profil"),
+                onTap: () {
+                  onItemTap(0);
+                },
+              ),
             ),
             ListTile(
-              leading: Icon(Icons.rule_outlined),
+              leading: Icon(FontAwesomeIcons.fileContract),
               title: Text("Terms and Conditions"),
               onTap: () {
                 onItemTap(1);
               },
             ),
             ListTile(
-              leading: Icon(Icons.dark_mode_outlined),
+              leading: Icon(FontAwesomeIcons.circleHalfStroke),
               title: Text("Dark Mode"),
               onTap: () {
                 onItemTap(2);
               },
             ),
             ListTile(
-              leading: Icon(Icons.category_outlined),
+              leading: Icon(FontAwesomeIcons.boxes),
               title: Text("Catalogue"),
               onTap: () {
                 onItemTap(3);
               },
             ),
             ListTile(
-              leading: Icon(Icons.calendar_today_rounded),
+              leading: Icon(FontAwesomeIcons.calendarDays),
               title: Text("Date of Birth"),
               onTap: () {
                 onItemTap(4);
               },
             ),
             ListTile(
-              leading: Icon(Icons.lock_clock_outlined),
+              leading: Icon(FontAwesomeIcons.stopwatch),
               title: Text("Set Reminders"),
               onTap: () {
                 onItemTap(5);
@@ -96,7 +103,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
             ),
 
             ListTile(
-              leading: Icon(Icons.list_alt),
+              leading: Icon(FontAwesomeIcons.listOl),
               title: Text("List of Furniture"),
               onTap: () {
                 onItemTap(6);
@@ -104,7 +111,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
             ),
 
             ListTile(
-              leading: Icon(Icons.list_outlined),
+              leading: Icon(FontAwesomeIcons.list),
               title: Text("List Map of Furniture"),
               onTap: () {
                 onItemTap(7);
@@ -112,24 +119,25 @@ class _HomeScreen1State extends State<HomeScreen1> {
             ),
 
             ListTile(
-              leading: Icon(Icons.list_outlined),
+              leading: Icon(FontAwesomeIcons.rectangleList),
               title: Text("Model of Furniture"),
               onTap: () {
                 onItemTap(8);
               },
             ),
+            SizedBox(height: 50),
 
-            // ListTile(
-            //   leading: Icon(Icons.logout),
-            //   title: Text("Logout"),
-            //   onTap: () {
-            //     Navigator.pushNamedAndRemoveUntil(
-            //       context,
-            //       '/login',
-            //       (route) => false,
-            //     );
-            //   },
-            // ),
+            ListTile(
+              leading: Icon(FontAwesomeIcons.rightFromBracket),
+              title: Text("Logout"),
+              onTap: () {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/login',
+                  (route) => false,
+                );
+              },
+            ),
           ],
         ),
       ),

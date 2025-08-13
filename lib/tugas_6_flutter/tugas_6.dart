@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ppkd_b_3/extensions/navigations.dart';
+import 'package:ppkd_b_3/tugas_10flutter/register.dart';
 import 'package:ppkd_b_3/tugas_8flutter/bot_nav_bar.dart';
 
 class Tugas6Flutter extends StatefulWidget {
@@ -411,8 +412,12 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {},
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      context.pushNamed(Register1.id);
+                    });
+                  },
                   child: Text(
                     "Join Us",
                     style: TextStyle(

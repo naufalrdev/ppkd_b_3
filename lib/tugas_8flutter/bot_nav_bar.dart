@@ -1,5 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:ppkd_b_3/tugas_10flutter/register.dart';
 import 'package:ppkd_b_3/tugas_7flutter/home_screen.dart';
 import 'package:ppkd_b_3/tugas_8flutter/about_page.dart';
 
@@ -16,7 +17,7 @@ class _BotBar1State extends State<BotBar1> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen1(),
     AboutPage1(),
-    Center(child: Text("Halaman 2")),
+    Register1(),
     Center(child: Text("Halaman 3")),
   ];
   @override

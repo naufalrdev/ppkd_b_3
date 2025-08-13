@@ -18,6 +18,7 @@ class _Checkbox1State extends State<Checkbox1> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 30),
             Text("I agree to all applicable terms and conditions"),
             SizedBox(height: 20),
             Row(
@@ -32,7 +33,7 @@ class _Checkbox1State extends State<Checkbox1> {
                   style: style,
                   onChanged: (value) {
                     setState(() {
-                      isChecked = value!;
+                      isChecked = value;
                     });
                   },
                 ),

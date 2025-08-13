@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:ppkd_b_3/tugas_10flutter/register.dart';
 import 'package:ppkd_b_3/tugas_6_flutter/tugas_6.dart';
 import 'package:ppkd_b_3/tugas_8flutter/bot_nav_bar.dart';
 
@@ -24,9 +25,11 @@ class MyApp extends StatelessWidget {
       initialRoute: "/login",
       routes: {
         "/login": (context) => Tugas6Flutter(),
+        Register1.id: (context) => Register1(),
         BotBar1.id: (context) => BotBar1(),
+        // SucRegist1.id (context) => SucRegist1()
       },
-      // home: KategoriPage(),
+      // home: Register1(),
     );
   }
 }
