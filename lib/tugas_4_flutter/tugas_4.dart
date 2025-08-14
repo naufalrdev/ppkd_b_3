@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ppkd_b_3/colors.dart';
 
 class Tugas4Flutter extends StatelessWidget {
   const Tugas4Flutter({super.key});

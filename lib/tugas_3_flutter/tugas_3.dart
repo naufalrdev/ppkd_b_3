@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ppkd_b_3/colors.dart';
+import 'package:ppkd_b_3/app_color.dart';
 
 class Tugas3Flutter extends StatelessWidget {
   const Tugas3Flutter({super.key});

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_3/colors.dart';
+import 'package:ppkd_b_3/app_color.dart';
+
 import 'package:ppkd_b_3/extensions/navigations.dart';
 import 'package:ppkd_b_3/tugas_10flutter/suc_regis.dart';
 import 'package:ppkd_b_3/tugas_10flutter/textform.dart';

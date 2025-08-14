@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ppkd_b_3/colors.dart';
+import 'package:ppkd_b_3/app_color.dart';
 import 'package:ppkd_b_3/extensions/navigations.dart';
+import 'package:ppkd_b_3/tugas_11flutter/views/user_screen.dart';
 import 'package:ppkd_b_3/tugas_7flutter/checkbox.dart';
 import 'package:ppkd_b_3/tugas_7flutter/datepicker.dart';
 import 'package:ppkd_b_3/tugas_7flutter/dropdown.dart';
@@ -32,6 +33,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
     List1(),
     ListMap1(),
     Model2(),
+    UserScreen1(),
   ];
 
   void onItemTap(int index) {
@@ -125,19 +127,27 @@ class _HomeScreen1State extends State<HomeScreen1> {
                 onItemTap(8);
               },
             ),
-            SizedBox(height: 50),
 
             ListTile(
-              leading: Icon(FontAwesomeIcons.rightFromBracket),
-              title: Text("Logout"),
+              leading: Icon(FontAwesomeIcons.rectangleList),
+              title: Text("DataBase"),
               onTap: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  '/login',
-                  (route) => false,
-                );
+                onItemTap(9);
               },
             ),
+            // SizedBox(height: 50),
+
+            // ListTile(
+            //   leading: Icon(FontAwesomeIcons.rightFromBracket),
+            //   title: Text("Logout"),
+            //   onTap: () {
+            //     Navigator.pushNamedAndRemoveUntil(
+            //       context,
+            //       '/login',
+            //       (route) => false,
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:ppkd_b_3/tugas_11flutter/sqflite/db_helper.dart';
 
 class UserScreen1 extends StatefulWidget {
   const UserScreen1({super.key});
+  static const id = "/user";
 
   @override
   State<UserScreen1> createState() => _UserScreen1State();
