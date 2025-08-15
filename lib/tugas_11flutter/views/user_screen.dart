@@ -62,6 +62,7 @@ class _UserScreen1State extends State<UserScreen1> {
                       Text(dataUserLogin.school),
                       SizedBox(height: 8),
                       Text(dataUserLogin.city),
+                      Divider(),
                     ],
                   );
                 },
