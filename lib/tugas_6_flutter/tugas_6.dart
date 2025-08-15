@@ -77,8 +77,6 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
       appBar: AppBar(
         title: Row(
           children: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios_new)),
-            SizedBox(width: 14),
             Text(
               "Login",
               style: TextStyle(
