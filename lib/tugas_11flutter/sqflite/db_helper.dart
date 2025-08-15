@@ -6,10 +6,10 @@ class DbHelper {
   static Future<Database> databaseHelper() async {
     final dbPath = await getDatabasesPath();
     return openDatabase(
-      join(dbPath, "login.db"),
+      join(dbPath, 'login.db'),
       onCreate: (db, version) {
         return db.execute(
-          'CREATE TABLE users(id INTEGER PRIMARY KEY, email TEXT, password TEXT, name TEXT, school TEXT, city TEXT)',
+          'CREATE TABLE users(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT, name TEXT, school TEXT, city TEXT)',
         );
       },
       version: 1,

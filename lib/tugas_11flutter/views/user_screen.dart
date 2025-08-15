@@ -18,6 +18,7 @@ class _UserScreen1State extends State<UserScreen1> {
     getUser();
   }
 
+  // final _formKey = GlobalKey();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -37,37 +38,36 @@ class _UserScreen1State extends State<UserScreen1> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            Text(
-              "DataBase Account",
-              style: TextStyle(fontFamily: "Lobster", fontSize: 30),
-            ),
-            Divider(),
-            ListView(
-              children: [
-                ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: users.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final dataUserLogin = users[index];
-                    return Column(
-                      children: [
-                        Text(dataUserLogin.name),
-                        SizedBox(height: 8),
-                        Text(dataUserLogin.email),
-                        SizedBox(height: 8),
-                        Text(dataUserLogin.school),
-                        SizedBox(height: 8),
-                        Text(dataUserLogin.city),
-                      ],
-                    );
-                  },
-                ),
-              ],
-            ),
-          ],
+        child: Form(
+          // key: _formKey,
+          child: Column(
+            children: [
+              Text(
+                "DataBase Account",
+                style: TextStyle(fontFamily: "Lobster", fontSize: 30),
+              ),
+              Divider(),
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: users.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final dataUserLogin = users[index];
+                  return Column(
+                    children: [
+                      Text(dataUserLogin.name),
+                      SizedBox(height: 8),
+                      Text(dataUserLogin.email),
+                      SizedBox(height: 8),
+                      Text(dataUserLogin.school),
+                      SizedBox(height: 8),
+                      Text(dataUserLogin.city),
+                    ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

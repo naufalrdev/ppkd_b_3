@@ -1,6 +1,7 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/tugas_10flutter/register.dart';
+import 'package:ppkd_b_3/tugas_11flutter/widgets/log_out.dart';
 import 'package:ppkd_b_3/tugas_7flutter/home_screen.dart';
 import 'package:ppkd_b_3/tugas_8flutter/about_page.dart';
 
@@ -18,7 +19,7 @@ class _BotBar1State extends State<BotBar1> {
     HomeScreen1(),
     AboutPage1(),
     Register1(),
-    Center(child: Text("Halaman 3")),
+    LogOut1(),
   ];
   @override
   Widget build(BuildContext context) {

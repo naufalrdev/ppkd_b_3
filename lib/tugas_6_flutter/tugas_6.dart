@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+// import 'package:lottie/lottie.dart';
 import 'package:ppkd_b_3/extensions/navigations.dart';
-import 'package:ppkd_b_3/tugas_10flutter/register.dart';
 import 'package:ppkd_b_3/tugas_11flutter/preference/shared_preference.dart';
 import 'package:ppkd_b_3/tugas_11flutter/sqflite/db_helper.dart';
 import 'package:ppkd_b_3/tugas_11flutter/views/register.dart';
@@ -16,41 +15,41 @@ class Tugas6Flutter extends StatefulWidget {
 }
 
 class _Tugas6Flutter extends State<Tugas6Flutter> {
-  final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   bool _obscurePassword = true;
 
-  void handleLogin(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text("Login Succesfull"),
-              Lottie.asset(
-                "assets/images/animations/Succes.json",
-                width: 100,
-                height: 100,
-              ),
-            ],
-          ),
-          content: Text("Let's Go"),
-          actions: [
-            TextButton(
-              child: Text("OK", style: TextStyle(color: Colors.blue)),
-              onPressed: () {
-                (context).pushNamed(BotBar1.id);
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
+  // void handleLogin(BuildContext context) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: Column(
+  //           mainAxisSize: MainAxisSize.min,
+  //           children: [
+  //             Text("Login Succesfull"),
+  //             Lottie.asset(
+  //               "assets/images/animations/Succes.json",
+  //               width: 100,
+  //               height: 100,
+  //             ),
+  //           ],
+  //         ),
+  //         content: Text("Let's Go"),
+  //         actions: [
+  //           TextButton(
+  //             child: Text("OK", style: TextStyle(color: Colors.blue)),
+  //             onPressed: () {
+  //               (context).pushNamed(BotBar1.id);
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
   login() async {
     final email = emailController.text.trim();
@@ -93,7 +92,7 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
 
       body: SingleChildScrollView(
         child: Form(
-          key: _formKey,
+          // key: _formKey,
           child: Column(
             children: [
               Padding(
@@ -304,12 +303,13 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                       backgroundColor: Color(0xFF283FB1),
                     ),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        final email = emailController.text;
-                        final password = passwordController.text;
+                      login();
+                      // if (_formKey.currentState!.validate()) {
+                      //   final email = emailController.text;
+                      //   final password = passwordController.text;
 
-                        handleLogin(context);
-                      }
+                      //   handleLogin(context);
+                      // }
                     },
                     child: Text(
                       "Login",
@@ -443,7 +443,7 @@ class _Tugas6Flutter extends State<Tugas6Flutter> {
                   TextButton(
                     onPressed: () {
                       setState(() {
-                        context.pushNamed(Register12.id);
+                        context.push(Register12());
                       });
                     },
                     child: Text(

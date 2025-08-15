@@ -19,7 +19,7 @@ class User {
     return <String, dynamic>{
       'email': email,
       'password': password,
-      'name ': name,
+      'name': name,
       "school": school,
       "city": city,
     };

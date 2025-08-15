@@ -127,16 +127,16 @@ class _Register12State extends State<Register12> {
                   height: 56,
                   child: ElevatedButton(
                     onPressed: () {
-                      registerUser();
+                      isLoading ? null : registerUser();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColor.blue,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusGeometry.circular(32),
+                        borderRadius: BorderRadius.circular(32),
                       ),
                     ),
                     child: isLoading
-                        ? CircularProgressIndicator()
+                        ? const CircularProgressIndicator(color: Colors.white)
                         : Text(
                             "Daftar",
                             style: TextStyle(
