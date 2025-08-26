@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ppkd_b_3/app_color.dart';
 import 'package:ppkd_b_3/extensions/navigations.dart';
 import 'package:ppkd_b_3/tugas_11flutter/views/user_screen.dart';
+import 'package:ppkd_b_3/tugas_14flutter/views/get_pokemon.dart';
 import 'package:ppkd_b_3/tugas_7flutter/checkbox.dart';
 import 'package:ppkd_b_3/tugas_7flutter/datepicker.dart';
 import 'package:ppkd_b_3/tugas_7flutter/dropdown.dart';
@@ -34,6 +35,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
     ListMap1(),
     Model2(),
     UserScreen1(),
+    PokemonScreen(),
   ];
 
   void onItemTap(int index) {
@@ -133,6 +135,13 @@ class _HomeScreen1State extends State<HomeScreen1> {
               title: Text("DataBase"),
               onTap: () {
                 onItemTap(9);
+              },
+            ),
+            ListTile(
+              leading: Icon(FontAwesomeIcons.rectangleList),
+              title: Text("Pokemon"),
+              onTap: () {
+                onItemTap(10);
               },
             ),
 

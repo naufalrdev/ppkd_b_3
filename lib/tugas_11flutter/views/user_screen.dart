@@ -64,7 +64,6 @@ class _UserScreen1State extends State<UserScreen1> {
                           Text(dataUserLogin.password),
                           Text(dataUserLogin.school),
                           Text(dataUserLogin.city),
-                          Divider(),
                         ],
                       ),
                       trailing: Row(
