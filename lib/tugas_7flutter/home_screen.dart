@@ -50,6 +50,12 @@ class _HomeScreen1State extends State<HomeScreen1> {
     return Scaffold(
       body: Center(child: _widgetOptions[_selectedIndexDrawer]),
       appBar: AppBar(
+        title: Image.asset(
+          "assets/images/logo.png",
+          fit: BoxFit.cover,
+          width: 100,
+        ),
+        centerTitle: true,
         backgroundColor: AppColor.teal,
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart)),

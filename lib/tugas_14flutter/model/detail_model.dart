@@ -1,16 +1,15 @@
 // To parse this JSON data, do
 //
-//     final burbasaurDataResponse = burbasaurDataResponseFromJson(jsonString);
+//     final pokeDetail = pokeDetailFromJson(jsonString);
 
 import 'dart:convert';
 
-BurbasaurDataResponse burbasaurDataResponseFromJson(String str) =>
-    BurbasaurDataResponse.fromJson(json.decode(str));
+PokeDetail pokeDetailFromJson(String str) =>
+    PokeDetail.fromJson(json.decode(str));
 
-String burbasaurDataResponseToJson(BurbasaurDataResponse data) =>
-    json.encode(data.toJson());
+String pokeDetailToJson(PokeDetail data) => json.encode(data.toJson());
 
-class BurbasaurDataResponse {
+class PokeDetail {
   List<Ability> abilities;
   int baseExperience;
   Cries cries;
@@ -32,7 +31,7 @@ class BurbasaurDataResponse {
   List<Type> types;
   int weight;
 
-  BurbasaurDataResponse({
+  PokeDetail({
     required this.abilities,
     required this.baseExperience,
     required this.cries,
@@ -55,37 +54,34 @@ class BurbasaurDataResponse {
     required this.weight,
   });
 
-  factory BurbasaurDataResponse.fromJson(Map<String, dynamic> json) =>
-      BurbasaurDataResponse(
-        abilities: List<Ability>.from(
-          json["abilities"].map((x) => Ability.fromJson(x)),
-        ),
-        baseExperience: json["base_experience"],
-        cries: Cries.fromJson(json["cries"]),
-        forms: List<Species>.from(
-          json["forms"].map((x) => Species.fromJson(x)),
-        ),
-        gameIndices: List<GameIndex>.from(
-          json["game_indices"].map((x) => GameIndex.fromJson(x)),
-        ),
-        height: json["height"],
-        heldItems: List<dynamic>.from(json["held_items"].map((x) => x)),
-        id: json["id"],
-        isDefault: json["is_default"],
-        locationAreaEncounters: json["location_area_encounters"],
-        moves: List<Move>.from(json["moves"].map((x) => Move.fromJson(x))),
-        name: json["name"],
-        order: json["order"],
-        pastAbilities: List<PastAbility>.from(
-          json["past_abilities"].map((x) => PastAbility.fromJson(x)),
-        ),
-        pastTypes: List<dynamic>.from(json["past_types"].map((x) => x)),
-        species: Species.fromJson(json["species"]),
-        sprites: Sprites.fromJson(json["sprites"]),
-        stats: List<Stat>.from(json["stats"].map((x) => Stat.fromJson(x))),
-        types: List<Type>.from(json["types"].map((x) => Type.fromJson(x))),
-        weight: json["weight"],
-      );
+  factory PokeDetail.fromJson(Map<String, dynamic> json) => PokeDetail(
+    abilities: List<Ability>.from(
+      json["abilities"].map((x) => Ability.fromJson(x)),
+    ),
+    baseExperience: json["base_experience"],
+    cries: Cries.fromJson(json["cries"]),
+    forms: List<Species>.from(json["forms"].map((x) => Species.fromJson(x))),
+    gameIndices: List<GameIndex>.from(
+      json["game_indices"].map((x) => GameIndex.fromJson(x)),
+    ),
+    height: json["height"],
+    heldItems: List<dynamic>.from(json["held_items"].map((x) => x)),
+    id: json["id"],
+    isDefault: json["is_default"],
+    locationAreaEncounters: json["location_area_encounters"],
+    moves: List<Move>.from(json["moves"].map((x) => Move.fromJson(x))),
+    name: json["name"],
+    order: json["order"],
+    pastAbilities: List<PastAbility>.from(
+      json["past_abilities"].map((x) => PastAbility.fromJson(x)),
+    ),
+    pastTypes: List<dynamic>.from(json["past_types"].map((x) => x)),
+    species: Species.fromJson(json["species"]),
+    sprites: Sprites.fromJson(json["sprites"]),
+    stats: List<Stat>.from(json["stats"].map((x) => Stat.fromJson(x))),
+    types: List<Type>.from(json["types"].map((x) => Type.fromJson(x))),
+    weight: json["weight"],
+  );
 
   Map<String, dynamic> toJson() => {
     "abilities": List<dynamic>.from(abilities.map((x) => x.toJson())),
