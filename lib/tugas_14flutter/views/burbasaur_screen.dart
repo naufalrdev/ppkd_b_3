@@ -1,36 +1,29 @@
-// import 'package:flutter/material.dart';
-// import 'package:ppkd_b_3/tugas_14flutter/api/get_pokemon.dart';
-// import 'package:ppkd_b_3/tugas_14flutter/model/burbasaur_model.dart';
+import 'package:flutter/material.dart';
+import 'package:ppkd_b_3/tugas_14flutter/model/pokemon_model.dart';
 
-// class DetailPokemon extends StatefulWidget {
-//   const DetailPokemon({super.key, required this.url});
-//   final String url;
+class PokemonDetail extends StatelessWidget {
+  final Pokemon pokemon;
+  const PokemonDetail({super.key, required this.pokemon});
 
-//   @override
-//   State<DetailPokemon> createState() => _DetailPokemonState();
-// }
-
-// class _DetailPokemonState extends State<DetailPokemon> {
-//   BurbasaurDataResponse? data;
-//   @override
-//   void initState() {
-//     loadData();
-
-//     super.initState();
-//   }
-
-//   loadData() async {
-//     final response = await getDetailPokemon(widget.url);
-//     data = response;
-//     setState(() {});
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: data == null
-//           ? CircularProgressIndicator()
-//           : Center(child: Text(data?.name ?? "")),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Image.network(
+              pokemon.img ?? "",
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+          SizedBox(height: 20),
+          Text(pokemon.height ?? ""),
+          Text(pokemon.weight ?? ""),
+        ],
+      ),
+    );
+  }
+}
