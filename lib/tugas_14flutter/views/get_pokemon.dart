@@ -13,93 +13,102 @@ class PokemonScreen extends StatefulWidget {
 }
 
 class _PokemonScreenState extends State<PokemonScreen> {
-  List<Result> allPokemon = [];
-  List<Result> filteredPokemon = [];
-  bool isLoading = true;
+  TextEditingController searchController = TextEditingController();
+  String searchQuery = "";
 
-  @override
-  void initState() {
-    super.initState();
-    fetchPokemon();
-  }
-
-  void fetchPokemon() async {
-    final result = await getPokemon();
-    setState(() {
-      allPokemon = result;
-      filteredPokemon = result;
-      isLoading = false;
-    });
-  }
-
-  void refreshPokemon() {
-    fetchPokemon();
+  Future<void> refreshPokemon() async {
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        onPressed: refreshPokemon,
-        child: Image.asset(fit: BoxFit.cover, "assets/images/pokebola.png"),
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 40),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search Pokémon...',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.search),
+      // floatingActionButton: FloatingActionButton(
+      //   elevation: 0,
+      //   backgroundColor: Colors.transparent,
+      //   onPressed: refreshPokemon,
+      //   child: Image.asset(fit: BoxFit.cover, "assets/images/pokebola.png"),
+      // ),
+      body: RefreshIndicator(
+        onRefresh: refreshPokemon,
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintText: "Search Pokemon...",
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.search),
+                      suffixIcon: searchQuery.isNotEmpty
+                          ? IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  searchQuery = "";
+                                  searchController.clear();
+                                });
+                              },
+                              icon: Icon(Icons.clear),
+                            )
+                          : null,
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        searchQuery = value.toLowerCase();
+                      });
+                    },
                   ),
-                  onChanged: (query) {
-                    setState(() {
-                      filteredPokemon = allPokemon
+                ),
+                FutureBuilder<List<Result>>(
+                  future: getPokemon(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.hasData) {
+                      final pokemon = snapshot.data as List<Result>;
+                      final filteredPokemon = pokemon
                           .where(
-                            (pokemon) => pokemon.name.toLowerCase().contains(
-                              query.toLowerCase(),
-                            ),
+                            (poke) =>
+                                poke.name.toLowerCase().contains(searchQuery),
                           )
                           .toList();
-                    });
+                      return ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: filteredPokemon.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          final dataPokemons = filteredPokemon[index];
+                          return Card(
+                            margin: EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            child: ListTile(
+                              onTap: () {
+                                context.push(
+                                  PokemonDetail(url: dataPokemons.url),
+                                );
+                              },
+                              title: Text(
+                                dataPokemons.name.toUpperCase(),
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    } else {
+                      return Text("Failed To Load Data");
+                    }
                   },
                 ),
-              ),
-              SizedBox(height: 20),
-              isLoading
-                  ? CircularProgressIndicator()
-                  : ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: filteredPokemon.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final dataPokemons = filteredPokemon[index];
-                        return Card(
-                          margin: EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                          child: ListTile(
-                            onTap: () {
-                              context.push(
-                                PokemonDetail(url: dataPokemons.url),
-                              );
-                            },
-                            title: Text(
-                              dataPokemons.name.toUpperCase(),
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

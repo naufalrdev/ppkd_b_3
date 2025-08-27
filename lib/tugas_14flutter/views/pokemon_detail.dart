@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/tugas_14flutter/api/get_pokemon.dart';
 import 'package:ppkd_b_3/tugas_14flutter/model/detail_model.dart';
+import 'package:ppkd_b_3/tugas_14flutter/utils/get_color.dart';
 
 class PokemonDetail extends StatefulWidget {
   final String url;
@@ -27,6 +28,10 @@ class _PokemonDetailState extends State<PokemonDetail> {
 
   @override
   Widget build(BuildContext context) {
+    final primaryType = data?.types.isNotEmpty == true
+        ? data!.types[0].type.name
+        : "normal";
+
     return Scaffold(
       body: data == null
           ? Center(child: CircularProgressIndicator())
@@ -38,36 +43,65 @@ class _PokemonDetailState extends State<PokemonDetail> {
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Colors.redAccent,
+                    color: getTypeColor(primaryType),
                   ),
-                  child: Stack(
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsGeometry.only(top: 30),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 30, left: 16, right: 16),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                          radius: 60,
+                          backgroundColor: Colors.transparent,
+                          child: Image.network(
+                            data?.sprites.frontDefault ?? "",
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        SizedBox(width: 12),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CircleAvatar(
-                              radius: 55,
-                              backgroundColor: Colors.transparent,
-                              child: Image.network(
-                                data?.sprites.frontDefault ?? "",
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
                             Text(
                               data?.name.toUpperCase() ?? "",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
-                                fontSize: 22,
+                                fontSize: 20,
                               ),
+                            ),
+                            SizedBox(height: 6),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: (data?.types ?? []).map((type) {
+                                final typeName = type.type.name;
+                                return Container(
+                                  margin: EdgeInsets.only(bottom: 4),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 4,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: getTypeColor(typeName),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Text(
+                                    typeName.toUpperCase(),
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
                             ),
                           ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 15),
@@ -172,33 +206,36 @@ class _PokemonDetailState extends State<PokemonDetail> {
                   "Statistic",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
-
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: data?.stats.length ?? 0,
-                  itemBuilder: (BuildContext context, int index) {
-                    final stat = data!.stats[index];
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          stat.stat.name,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                Wrap(
+                  spacing: 20,
+                  runSpacing: 20,
+                  children: data!.stats.map((stat) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width / 3 - 24,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            stat.baseStat.toString(),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.pinkAccent,
+                            ),
                           ),
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          stat.baseStat.toString(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                          SizedBox(height: 4),
+                          Text(
+                            stat.stat.name.replaceAll('-', ' ').toUpperCase(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey[700],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     );
-                  },
+                  }).toList(),
                 ),
               ],
             ),
