@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:ppkd_b_3/tugas_11flutter/views/splash_screen.dart';
+import 'package:ppkd_b_3/tugas_15flutter/views/profile_screen..dart';
 import 'package:ppkd_b_3/tugas_15flutter/views/screen.dart';
-import 'package:ppkd_b_3/tugas_6_flutter/tugas_6.dart';
-import 'package:ppkd_b_3/tugas_8flutter/bot_nav_bar.dart';
+import 'package:ppkd_b_3/tugas_15flutter/views/splash_screen.dart';
 
 void main() {
   initializeDateFormatting("id_ID");
@@ -23,6 +22,12 @@ class MyApp extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      initialRoute: SplashScreen12.id,
+      routes: {
+        "/login": (context) => ScreenBefore(),
+        SplashScreen12.id: (context) => SplashScreen12(),
+        ProfileScreen.id: (context) => ProfileScreen(),
+      },
       // initialRoute: ScreenBefore.id,
       // routes: {
       //   "/login": (context) => Tugas6Flutter(),
@@ -30,7 +35,7 @@ class MyApp extends StatelessWidget {
       //   // Register12.id: (context) => Register12(),
       //   BotBar1.id: (context) => BotBar1(),
       // },
-      home: ScreenBefore(),
+      // home: ScreenBefore(),
     );
   }
 }

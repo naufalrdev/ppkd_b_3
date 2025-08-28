@@ -9,7 +9,7 @@ class PreferenceHandler {
     await prefs.setBool(loginKey, true);
   }
 
-  static void saveToken(String token) async {
+  static Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(tokenKey, token);
   }
@@ -32,7 +32,7 @@ class PreferenceHandler {
     await prefs.remove(loginKey);
   }
 
-  static void removeToken() async {
+  static Future<void> removeToken() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(tokenKey);
   }

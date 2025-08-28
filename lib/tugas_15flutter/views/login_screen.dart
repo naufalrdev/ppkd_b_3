@@ -3,7 +3,7 @@ import 'package:ppkd_b_3/extensions/navigations.dart';
 import 'package:ppkd_b_3/tugas_15flutter/api/register_user.dart';
 import 'package:ppkd_b_3/tugas_15flutter/models/register_user.dart';
 import 'package:ppkd_b_3/tugas_15flutter/shared_preference/shared_preference.dart';
-import 'package:ppkd_b_3/tugas_15flutter/views/dashboard.dart';
+import 'package:ppkd_b_3/tugas_15flutter/views/profile_screen..dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
         context,
       ).showSnackBar(const SnackBar(content: Text("Succesful Login")));
       PreferenceHandler.saveToken(user?.data?.token.toString() ?? "");
-      context.pushReplacement(DashboardScreen());
+      context.pushReplacement(ProfileScreen());
 
       print(user?.toJson());
     } catch (e) {

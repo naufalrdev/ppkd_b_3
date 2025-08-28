@@ -11,17 +11,19 @@ String getUserModelToJson(GetUserModel data) => json.encode(data.toJson());
 
 class GetUserModel {
   String message;
-  Data data;
+  GetData data;
 
   GetUserModel({required this.message, required this.data});
 
-  factory GetUserModel.fromJson(Map<String, dynamic> json) =>
-      GetUserModel(message: json["message"], data: Data.fromJson(json["data"]));
+  factory GetUserModel.fromJson(Map<String, dynamic> json) => GetUserModel(
+    message: json["message"],
+    data: GetData.fromJson(json["data"]),
+  );
 
   Map<String, dynamic> toJson() => {"message": message, "data": data.toJson()};
 }
 
-class Data {
+class GetData {
   int id;
   String name;
   String email;
@@ -29,7 +31,7 @@ class Data {
   DateTime createdAt;
   DateTime updatedAt;
 
-  Data({
+  GetData({
     required this.id,
     required this.name,
     required this.email,
@@ -38,7 +40,7 @@ class Data {
     required this.updatedAt,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory GetData.fromJson(Map<String, dynamic> json) => GetData(
     id: json["id"],
     name: json["name"],
     email: json["email"],

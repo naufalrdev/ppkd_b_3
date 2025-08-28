@@ -12,27 +12,27 @@ String registUserModelToJson(RegistUserModel data) =>
 
 class RegistUserModel {
   String message;
-  Data data;
+  RegisterData data;
 
   RegistUserModel({required this.message, required this.data});
 
   factory RegistUserModel.fromJson(Map<String, dynamic> json) =>
       RegistUserModel(
         message: json["message"],
-        data: Data.fromJson(json["data"]),
+        data: RegisterData.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {"message": message, "data": data.toJson()};
 }
 
-class Data {
+class RegisterData {
   String token;
   User user;
 
-  Data({required this.token, required this.user});
+  RegisterData({required this.token, required this.user});
 
-  factory Data.fromJson(Map<String, dynamic> json) =>
-      Data(token: json["token"], user: User.fromJson(json["user"]));
+  factory RegisterData.fromJson(Map<String, dynamic> json) =>
+      RegisterData(token: json["token"], user: User.fromJson(json["user"]));
 
   Map<String, dynamic> toJson() => {"token": token, "user": user.toJson()};
 }

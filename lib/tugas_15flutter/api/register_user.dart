@@ -37,10 +37,13 @@ class AuthenticationAPI {
       headers: {"Accept": "application/json"},
     );
     if (response.statusCode == 200) {
-      return RegistUserModel.fromJson(json.decode(response.body));
+      final data = RegistUserModel.fromJson(json.decode(response.body));
+      await PreferenceHandler.saveToken(data.data.token);
+      await PreferenceHandler.saveLogin();
+      return data;
     } else {
       final error = json.decode(response.body);
-      throw Exception(error["message"] ?? "Failed to Register");
+      throw Exception(error["message"] ?? "Something went wrong");
     }
   }
 
@@ -51,13 +54,13 @@ class AuthenticationAPI {
     final response = await http.post(
       url,
       body: {"name": name},
-      headers: {"Accept": "application/json", "Authorization": token},
+      headers: {"Accept": "application/json", "Authorization": "Bearer $token"},
     );
     if (response.statusCode == 200) {
       return GetUserModel.fromJson(json.decode(response.body));
     } else {
       final error = json.decode(response.body);
-      throw Exception(error["message"] ?? "Failed to Register");
+      throw Exception(error["message"] ?? "Data is not valid");
     }
   }
 
@@ -66,13 +69,13 @@ class AuthenticationAPI {
     final token = await PreferenceHandler.getToken();
     final response = await http.get(
       url,
-      headers: {"Accept": "application/json", "Authorization": token},
+      headers: {"Accept": "application/json", "Authorization": "Bearer $token"},
     );
     if (response.statusCode == 200) {
       return GetUserModel.fromJson(json.decode(response.body));
     } else {
       final error = json.decode(response.body);
-      throw Exception(error["message"] ?? "Register gagal");
+      throw Exception(error["message"] ?? "Get data is not valid");
     }
   }
 }

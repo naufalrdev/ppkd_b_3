@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/extensions/navigations.dart';
-import 'package:ppkd_b_3/tugas_15flutter/views/login_user.dart';
+import 'package:ppkd_b_3/tugas_15flutter/views/login_screen.dart';
 import 'package:ppkd_b_3/tugas_15flutter/views/register_screen.dart';
 
 class ScreenBefore extends StatefulWidget {
