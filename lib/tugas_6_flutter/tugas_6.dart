@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:lottie/lottie.dart';
 import 'package:ppkd_b_3/extensions/navigations.dart';
-import 'package:ppkd_b_3/tugas_11flutter/preference/shared_preference.dart';
+import 'package:ppkd_b_3/tugas_15flutter/shared_preference/shared_preference.dart';
 import 'package:ppkd_b_3/tugas_11flutter/sqflite/db_helper.dart';
 import 'package:ppkd_b_3/tugas_11flutter/views/register.dart';
 import 'package:ppkd_b_3/tugas_8flutter/bot_nav_bar.dart';
