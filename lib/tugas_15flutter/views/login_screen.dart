@@ -4,7 +4,6 @@ import 'package:ppkd_b_3/tugas_15flutter/api/register_user.dart';
 import 'package:ppkd_b_3/tugas_15flutter/models/register_user.dart';
 import 'package:ppkd_b_3/tugas_15flutter/shared_preference/shared_preference.dart';
 import 'package:ppkd_b_3/tugas_15flutter/views/profile_screen..dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -47,8 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text("Succesful Login")));
-      PreferenceHandler.saveToken(user?.data?.token.toString() ?? "");
-      context.pushReplacement(ProfileScreen());
+      PreferenceHandler.saveToken(user?.data.token.toString() ?? "");
+      context.pushReplacementNamed(ProfileScreen.id);
 
       print(user?.toJson());
     } catch (e) {
@@ -127,91 +126,70 @@ class _LoginScreenState extends State<LoginScreen> {
 
   SafeArea buildLayer() {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Make Yourself",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "Lobster",
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                Text(
-                  "Better",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "Lobster",
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                height(20),
-                buildTextField(
-                  controller: emailController,
-                  labelText: "Email",
-                  hintText: "Please input your email",
-                ),
-                height(10),
-                buildTextField(
-                  controller: passwordController,
-                  labelText: "Password",
-                  hintText: "Please input your password",
-                  isPassword: true,
-                ),
-                height(10),
-                SizedBox(
-                  height: 56,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlueAccent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
+      child: Padding(
+        padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 8),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/logo.png"),
+              height(40),
+              buildTextField(
+                controller: emailController,
+                labelText: "Email",
+                hintText: "Please input your email",
+              ),
+              height(10),
+              buildTextField(
+                controller: passwordController,
+                labelText: "Password",
+                hintText: "Please input your password",
+                isPassword: true,
+              ),
+              height(20),
+              SizedBox(
+                height: 56,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.yellow,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    onPressed: () {
-                      login();
-                    },
+                  ),
+                  onPressed: () {
+                    login();
+                  },
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              height(8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {},
                     child: Text(
-                      "Login",
+                      "Forgot Password?",
                       style: TextStyle(
                         fontFamily: "Poppins",
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.yellow,
                       ),
                     ),
                   ),
-                ),
-                height(8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Forgot Password?",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

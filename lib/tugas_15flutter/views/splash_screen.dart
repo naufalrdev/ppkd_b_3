@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/extensions/navigations.dart';
-import 'package:ppkd_b_3/tugas_14flutter/views/get_pokemon.dart';
 import 'package:ppkd_b_3/tugas_15flutter/shared_preference/shared_preference.dart';
 import 'package:ppkd_b_3/tugas_15flutter/views/profile_screen..dart';
 import 'package:ppkd_b_3/tugas_15flutter/views/screen.dart';
@@ -36,12 +35,11 @@ class _SplashScreen12State extends State<SplashScreen12> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage("assets/images/pokebola.png"),
-          ),
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Image.asset("assets/images/logo.png")],
         ),
       ),
     );

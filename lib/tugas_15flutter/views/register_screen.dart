@@ -54,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text("Succesful Register")));
-      PreferenceHandler.saveToken(user?.data?.token.toString() ?? "");
+      PreferenceHandler.saveToken(user?.data.token.toString() ?? "");
       print(user?.toJson());
     } catch (e) {
       print(e);
@@ -127,99 +127,60 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   SafeArea buildLayer() {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Make Yourself",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "Lobster",
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                Text(
-                  "Better",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "Lobster",
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                height(20),
-                buildTextField(
-                  controller: nameController,
-                  labelText: "Name",
-                  hintText: "Please input your name",
-                ),
-                height(10),
-                buildTextField(
-                  controller: emailController,
-                  labelText: "Email Address",
-                  hintText: "Please input your email",
-                ),
-                height(10),
-                buildTextField(
-                  controller: passwordController,
-                  labelText: "Password",
-                  hintText: "Please input your password",
-                  isPassword: true,
-                ),
-                height(10),
-                SizedBox(
-                  height: 56,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlueAccent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
+      child: Padding(
+        padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 8),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/logo.png"),
+              height(40),
+              buildTextField(
+                controller: nameController,
+                labelText: "Name",
+                hintText: "Please input your name",
+              ),
+              height(10),
+              buildTextField(
+                controller: emailController,
+                labelText: "Email Address",
+                hintText: "Please input your email",
+              ),
+              height(10),
+              buildTextField(
+                controller: passwordController,
+                labelText: "Password",
+                hintText: "Please input your password",
+                isPassword: true,
+              ),
+              height(20),
+              SizedBox(
+                height: 56,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    onPressed: () {
-                      isLoading ? null : registerUser();
-                    },
-                    child: isLoading
-                        ? const CircularProgressIndicator(color: Colors.white)
-                        : Text(
-                            "Register",
-                            style: TextStyle(
-                              fontFamily: "Lobster",
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
+                  ),
+                  onPressed: () {
+                    isLoading ? null : registerUser();
+                  },
+                  child: isLoading
+                      ? const CircularProgressIndicator(color: Colors.white)
+                      : Text(
+                          "Register",
+                          style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
-                  ),
-                ),
-                height(8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Forgot Password?",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.indigoAccent,
                         ),
-                      ),
-                    ),
-                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -30,130 +30,120 @@ class _ScreenBeforeState extends State<ScreenBefore> {
 
   SafeArea buildLayer() {
     return SafeArea(
-      child: SingleChildScrollView(
+      child: Center(
         child: Padding(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // SizedBox(height: 0),
-                Text(
-                  "Make Yourself",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "Lobster",
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  "Better",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "Lobster",
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 40),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Image.asset("assets/images/logo.png"),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    onPressed: () {
-                      context.push(RegisterScreen());
-                    },
+                  ),
+                  onPressed: () {
+                    context.push(RegisterScreen());
+                  },
+                  child: const Text(
+                    "Create Account",
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.yellow,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  onPressed: () {
+                    context.push(LoginScreen());
+                  },
+                  child: const Text(
+                    "Sign In",
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: <Widget>[
+                  const Expanded(
+                    child: Divider(color: Colors.grey, thickness: 1),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      "Create Account",
+                      'Or Sign In With',
                       style: TextStyle(
                         fontFamily: "Poppins",
-                        fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.grey[700],
                       ),
                     ),
                   ),
-                ),
-                SizedBox(height: 10),
-
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepOrangeAccent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    onPressed: () {
-                      context.push(LoginScreen());
-                    },
-                    child: Text(
-                      "Sign In",
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                  const Expanded(
+                    child: Divider(color: Colors.grey, thickness: 1),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                ),
-                SizedBox(height: 10),
-                Row(
-                  children: <Widget>[
-                    Expanded(child: Divider(color: Colors.grey, thickness: 1)),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text(
-                        'Or Sign In With',
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/iconGoogle.png",
+                        height: 20,
+                        width: 20,
+                        fit: BoxFit.cover,
+                      ),
+                      const SizedBox(width: 15),
+                      const Text(
+                        "Google",
                         style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey[700],
+                          color: Colors.white,
                         ),
                       ),
-                    ),
-                    Expanded(child: Divider(color: Colors.grey, thickness: 1)),
-                  ],
-                ),
-
-                SizedBox(height: 15),
-
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    onPressed: () {},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(width: 15),
-                        Text(
-                          "Google",
-                          style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

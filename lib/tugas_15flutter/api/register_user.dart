@@ -51,7 +51,7 @@ class AuthenticationAPI {
     final url = Uri.parse(Endpoint.profile);
     final token = await PreferenceHandler.getToken();
 
-    final response = await http.post(
+    final response = await http.put(
       url,
       body: {"name": name},
       headers: {"Accept": "application/json", "Authorization": "Bearer $token"},
